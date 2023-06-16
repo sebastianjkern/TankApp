@@ -1,14 +1,14 @@
-package com.uniproject;
+package com.uniproject.view;
 
 import javafx.scene.layout.StackPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
-class MapView extends StackPane {
+public class MapPane extends StackPane {
     final private WebView webView = new WebView();
     final private WebEngine webEngine = webView.getEngine();
 
-    public MapView() {
+    public MapPane() {
         try {
             webEngine.load(this.getClass().getResource("/resources/index.html").toExternalForm());
         } catch (NullPointerException e) {

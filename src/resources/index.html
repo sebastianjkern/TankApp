@@ -1,15 +1,11 @@
 <html><body>
-<div id="mapdiv"></div>
+<div id="mapdiv" style=""></div>
 <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
 <script type="text/javascript">
     map = new OpenLayers.Map("mapdiv");
     map.addLayer(new OpenLayers.Layer.OSM());
 
-    var pois = new OpenLayers.Layer.Text( "My Points",
-                    { location:"./textfile.txt",
-                      projection: map.displayProjection
-                    });
-    map.addLayer(pois);
+
 
     //Set start centrepoint and zoom
     var lonLat = new OpenLayers.LonLat( 13.7372621, 51.0504088 )

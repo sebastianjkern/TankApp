@@ -43,7 +43,7 @@ public class GasStationDataFetcher {
         for (int i = 0; i < stationsArray.length(); i++) {
             JSONObject station = stationsArray.getJSONObject(i);
 
-            // Using constructor to create GasStationData object
+            // Using constructor to create GasStation object
             GasStation gasStationData = new GasStation(
                     station.getString("id"),
                     station.getString("name"),
@@ -67,7 +67,7 @@ public class GasStationDataFetcher {
         return gasStationDataList;
     }
     
-    public static String getAPIUrl(double lat, double lng, double rad, String sort, String type, String apikey) {
+    public String getAPIUrl(double lat, double lng, double rad, String sort, String type, String apikey) {
         return String.format("https://creativecommons.tankerkoenig.de/json/list.php?lat=%f&lng=%f&rad=%f&sort=%s&type=%s&apikey=%s",
                 lat, lng, rad, sort, type, apikey);
     }

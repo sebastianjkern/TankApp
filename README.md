@@ -8,7 +8,7 @@ To run the TankApp project, you need to provide an API key for `creativecommons.
 
 1. Create a `config.properties` file in the root directory of the project.
 
-2. Add the following line to the `config.properties` file: `apiKey=00000000-0000-0000-0000-000000000002`. Replace the API key with your actual API key:
+2. Add the following line to the `config.properties` file: `api.key=00000000-0000-0000-0000-000000000002`. Replace the API key with your actual API key:
 
 3. Save the `config.properties` file.
 

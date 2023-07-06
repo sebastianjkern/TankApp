@@ -18,12 +18,9 @@ public class GasStationPane extends HBox {
     final Region region2 = new Region();
 
     public GasStationPane(GasStation gasStation) {
-        String priceString = gasStation.price.euros +
-                "," +
-                gasStation.price.cents +
-                "€";
+        String priceString = gasStation.getE5() + "€";
 
-        this.name = new Text(gasStation.name);
+        this.name = new Text(gasStation.getName());
         this.price = new Text(priceString);
 
         this.setAlignment(Pos.CENTER);

@@ -15,24 +15,24 @@ public class GasStation {
     private boolean isOpen;
     private String houseNumber;
     private int postCode;
-    
-    public GasStation(String id, String name, String brand, String street, String place, float lat, float lng, float dist, 
-            float diesel, float e5, float e10, boolean isOpen, String houseNumber, int postCode) {
-		this.id = id;
-		this.name = name;
-		this.brand = brand;
-		this.street = street;
-		this.place = place;
-		this.lat = lat;
-		this.lng = lng;
-		this.dist = dist;
-		this.diesel = diesel;
-		this.e5 = e5;
-		this.e10 = e10;
-		this.isOpen = isOpen;
-		this.houseNumber = houseNumber;
-		this.postCode = postCode;
-	}
+
+    public GasStation(String id, String name, String brand, String street, String place, float lat, float lng, float dist,
+                      float diesel, float e5, float e10, boolean isOpen, String houseNumber, int postCode) {
+        this.id = id;
+        this.name = name;
+        this.brand = brand;
+        this.street = street;
+        this.place = place;
+        this.lat = lat;
+        this.lng = lng;
+        this.dist = dist;
+        this.diesel = diesel;
+        this.e5 = e5;
+        this.e10 = e10;
+        this.isOpen = isOpen;
+        this.houseNumber = houseNumber;
+        this.postCode = postCode;
+    }
 
     // Getters
     public String getId() {
@@ -118,6 +118,10 @@ public class GasStation {
 
     public void setLng(float lng) {
         this.lng = lng;
+    }
+
+    public Coordinate getCoordinate() {
+        return new Coordinate(lng, lat);
     }
 
     public void setDist(float dist) {

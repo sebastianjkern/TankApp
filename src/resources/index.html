@@ -1,20 +1,5 @@
 <html><body>
 <div id="mapdiv" style=""></div>
 <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
-<script type="text/javascript">
-    map = new OpenLayers.Map("mapdiv");
-    map.addLayer(new OpenLayers.Layer.OSM());
-
-
-
-    //Set start centrepoint and zoom
-    var lonLat = new OpenLayers.LonLat( 13.7372621, 51.0504088 )
-          .transform(
-            new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-            map.getProjectionObject() // to Spherical Mercator Projection
-          );
-    var zoom=11;
-    map.setCenter (lonLat, zoom);
-
-  </script>
+<script type="text/javascript" src="./script.js"></script>
 </body></html>

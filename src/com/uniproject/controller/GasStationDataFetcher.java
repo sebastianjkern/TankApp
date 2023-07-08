@@ -12,14 +12,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GasStationDataFetcher {
-	
-	private final String API_KEY;
-	
-	public GasStationDataFetcher(String apiKey) {
-		this.API_KEY = apiKey;
-	}
-	
-	// Test Values 52.521, 13.438, 5.0
+
+    private final String API_KEY;
+
+    public GasStationDataFetcher(String apiKey) {
+        this.API_KEY = apiKey;
+    }
+
+    // Test Values 52.521, 13.438, 5.0
     public List<GasStation> fetchGasStationData(double centerLat, double centerLon, double rad) throws Exception {
         List<GasStation> gasStationDataList = new ArrayList<>();
         String urlS = getAPIUrl(centerLat, centerLon, rad, "dist", "all", API_KEY);
@@ -60,13 +60,13 @@ public class GasStationDataFetcher {
                     station.getString("houseNumber"),
                     station.getInt("postCode")
             );
-            
+
             gasStationDataList.add(gasStationData);
         }
 
         return gasStationDataList;
     }
-    
+
     public String getAPIUrl(double lat, double lng, double rad, String sort, String type, String apikey) {
         return String.format("https://creativecommons.tankerkoenig.de/json/list.php?lat=%f&lng=%f&rad=%f&sort=%s&type=%s&apikey=%s",
                 lat, lng, rad, sort, type, apikey);

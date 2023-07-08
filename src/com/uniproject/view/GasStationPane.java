@@ -1,8 +1,8 @@
 package com.uniproject.view;
 
+import com.uniproject.controller.MainController;
 import com.uniproject.model.GasStation;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -17,11 +17,19 @@ public class GasStationPane extends HBox {
     final Region region1 = new Region();
     final Region region2 = new Region();
 
-    public GasStationPane(GasStation gasStation) {
+    private MainController mainController;
+
+    public GasStationPane(GasStation gasStation, MainController mainController) {
+        this.mainController = mainController;
+
         String priceString = gasStation.getE5() + "€";
 
         this.name = new Text(gasStation.getName());
         this.price = new Text(priceString);
+
+        this.button.setOnAction(event -> {
+            this.mainController.mapCenterCallback.apply(gasStation.getCoordinate());
+        });
 
         this.setAlignment(Pos.CENTER);
 

@@ -10,5 +10,6 @@
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="jmetro-11.6.16" level="project" />
     <orderEntry type="library" name="json-20230618" level="project" />
+    <orderEntry type="library" name="javascript" level="project" />
   </component>
 </module>

@@ -16,7 +16,7 @@ function getPosition(position) {
     return lonlat;
 }
 
-function updateGasStations() {
+function updateCenter() {
     var zoom=15;
     map.setCenter(getPosition(window.center), zoom);
 }
@@ -30,5 +30,10 @@ function updateMarkers() {
     }
 }
 
-updateMarkers();
-updateGasStations();
+map.getViewport().addEventListener('dragend', function (e) {
+    // let center = [map.center.lon, map.center.lat];
+    // window.center = new OpenLayers.LonLat(center[0], center[1]).transform(map.getProjectionObject(), new OpenLayers.Projection("EPSG:4326"));
+    app.onClick();
+})
+
+updateCenter();

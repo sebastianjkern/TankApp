@@ -16,11 +16,7 @@ public class MainView extends SplitPane {
         this.getItems().addAll(sideBar, mapView);
         this.setDividerPositions(0.3f, 0.6f);
 
-        mapView.webEngine.getLoadWorker().stateProperty().addListener((obs, oldState, newState) -> {
-            if (newState == Worker.State.SUCCEEDED) {
-                mainController.mapUpdateCallback.apply(this.mainController.gasStations);
-            }
-        });
+
     }
 
 }

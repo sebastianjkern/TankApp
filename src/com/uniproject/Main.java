@@ -28,10 +28,8 @@ public class Main extends Application {
         final String apiKey = properties.getProperty("api.key");
         System.out.println("API key: " + apiKey);
 
-
         MainController mainController = new MainController(apiKey);
         MainView mainView = new MainView(mainController);
-
 
         Scene scene = new Scene(mainView, 1280, 720);
 

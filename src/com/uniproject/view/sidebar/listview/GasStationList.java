@@ -14,7 +14,7 @@ public class GasStationList extends ScrollPane {
     final VBox vBox = new VBox();
     final MainController mainController;
 
-    // Update content of the list from the gas stations that are stored in the main controller
+    // Update content of the list from the gas stations from the given list
     public Boolean updateList(List<GasStation> gasStations) {
         List<GasStationPane> gasStationPanes = new java.util.ArrayList<GasStationPane>(Collections.<GasStationPane>emptyList());
 

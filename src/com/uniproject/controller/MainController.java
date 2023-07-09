@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.function.Function;
 
 public class MainController {
-    // TODO: Search
-
     public GasStationDataFetcher gasStationDataFetcher;
+
+    // Data cache for full result and filtered result
     public List<GasStation> gasStations;
     public List<GasStation> searchResult;
 
@@ -32,30 +32,27 @@ public class MainController {
         this.listUpdateCallback = callback;
     }
 
+    // Basic filtering algorithm for searching name of gas station
     public void search(String query) {
         this.searchResult = gasStations.stream().filter(n -> n.getName().contains(query)).toList();
     }
 
-    // Creating
     public MainController(String apiKey) {
+        // Initialize API abstraction interface with api key
         this.gasStationDataFetcher = new GasStationDataFetcher(apiKey);
-        if (requestNewLocation(51.050407, 13.737262, 5.0)) {
-            // Success
-        } else {
-            // Error / Try Again ...
-        }
+
+        // Request initial data,
+        requestNewLocation(51.050407, 13.737262, 5.0);
     }
 
     // Requests data from the api through the GasStationDataFetcher
     // and stores it in the main controller
-    public boolean requestNewLocation(double lat, double lon, double rad) {
+    public void requestNewLocation(double lat, double lon, double rad) {
         try {
             this.gasStations = gasStationDataFetcher.fetchGasStationData(lat, lon, rad);
-            return true;
         } catch (Exception e) {
             System.out.println(e);
             this.gasStations = new java.util.ArrayList<GasStation>(Collections.<GasStation>emptyList());
-            return false;
         }
     }
 }

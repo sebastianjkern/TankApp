@@ -7,8 +7,7 @@ import javafx.scene.control.SplitPane;
 
 // Top level class for the GUI
 // Splits the app in two
-// main views and initializes them
-// Sets basic divider positions
+// views and initializes them
 public class MainView extends SplitPane {
     public MainView(MainController mainController) {
         MapPane mapView = new MapPane(mainController);

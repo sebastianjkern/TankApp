@@ -7,7 +7,7 @@ import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
 
 // Top level class for the sidebar
-// Initializes the
+// Initializes the searchbar and the gas station list
 public class SideBar extends VBox {
 
     public SideBar(MainController mainController) {

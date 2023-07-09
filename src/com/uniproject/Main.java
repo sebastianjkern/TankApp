@@ -45,6 +45,8 @@ public class Main extends Application {
         // Especially loading the main view
         primaryStage.setTitle("TankApp");
         primaryStage.setScene(scene);
+
+        // And finally show the app
         primaryStage.show();
     }
 

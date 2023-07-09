@@ -13,13 +13,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GasStationDataFetcher {
-
     private final String API_KEY;
 
     public GasStationDataFetcher(String apiKey) {
         this.API_KEY = apiKey;
     }
 
+    // Sometimes the api doesn't respond with every field we expect,
+    // therefor we check if values are convertible otherwise
+    // we respond wit obviously wrong data
     public float GetDouble(JSONObject object, String string) {
         try {
             return (float) object.getDouble(string);
@@ -28,13 +30,19 @@ public class GasStationDataFetcher {
         }
     }
 
-    // Test Values 52.521, 13.438, 5.0
     public List<GasStation> fetchGasStationData(double centerLat, double centerLon, double rad) throws Exception {
+
+        // Initialize list and buid url from given data
         List<GasStation> gasStationDataList = new ArrayList<>();
         String urlS = getAPIUrl(centerLat, centerLon, rad, "dist", "all", API_KEY);
         URL url = new URL(urlS);
+
+        // Build HTTP Connection to JSON API Server and request data
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
+
+        // Read data from response and combine into single
+        // stringbuilder object
         BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         String inputLine;
         StringBuilder content = new StringBuilder();
@@ -46,13 +54,14 @@ public class GasStationDataFetcher {
         in.close();
         conn.disconnect();
 
+        // Read API response with json library
         JSONObject jsonObject = new JSONObject(content.toString());
         JSONArray stationsArray = jsonObject.getJSONArray("stations");
 
         for (int i = 0; i < stationsArray.length(); i++) {
             JSONObject station = stationsArray.getJSONObject(i);
 
-            // Using constructor to create GasStation object
+            // Convert unstructured data to data model
             GasStation gasStationData = new GasStation(
                     station.getString("id"),
                     station.getString("name"),
@@ -76,6 +85,8 @@ public class GasStationDataFetcher {
         return gasStationDataList;
     }
 
+    // Build the API query string from given data,
+    // especially the needed latitude and longitude
     public String getAPIUrl(double lat, double lng, double rad, String sort, String type, String apikey) {
         return String.format("https://creativecommons.tankerkoenig.de/json/list.php?lat=%f&lng=%f&rad=%f&sort=%s&type=%s&apikey=%s",
                 lat, lng, rad, sort, type, apikey);

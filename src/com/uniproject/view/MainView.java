@@ -1,22 +1,19 @@
 package com.uniproject.view;
 
 import com.uniproject.controller.MainController;
-import javafx.concurrent.Worker;
+import com.uniproject.view.map.MapPane;
+import com.uniproject.view.sidebar.SideBar;
 import javafx.scene.control.SplitPane;
 
+// Top level class for the GUI
+// Splits the app in two
+// main views and initializes them
+// Sets basic divider positions
 public class MainView extends SplitPane {
-    private MainController mainController;
-    private MapPane mapView;
-    private SideBar sideBar;
-
     public MainView(MainController mainController) {
-        this.mainController = mainController;
-        this.mapView = new MapPane(this.mainController);
-        this.sideBar = new SideBar(this.mainController);
+        MapPane mapView = new MapPane(mainController);
+        SideBar sideBar = new SideBar(mainController);
         this.getItems().addAll(sideBar, mapView);
         this.setDividerPositions(0.3f, 0.6f);
-
-
     }
-
 }

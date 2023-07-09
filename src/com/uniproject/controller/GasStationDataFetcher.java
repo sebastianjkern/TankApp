@@ -2,6 +2,7 @@ package com.uniproject.controller;
 
 import com.uniproject.model.GasStation;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -17,6 +18,14 @@ public class GasStationDataFetcher {
 
     public GasStationDataFetcher(String apiKey) {
         this.API_KEY = apiKey;
+    }
+
+    public float GetDouble(JSONObject object, String string) {
+        try {
+            return (float) object.getDouble(string);
+        } catch (JSONException e) {
+            return -1;
+        }
     }
 
     // Test Values 52.521, 13.438, 5.0
@@ -50,12 +59,12 @@ public class GasStationDataFetcher {
                     station.getString("brand"),
                     station.getString("street"),
                     station.getString("place"),
-                    (float) station.getDouble("lat"),
-                    (float) station.getDouble("lng"),
-                    (float) station.getDouble("dist"),
-                    (float) station.getDouble("diesel"),
-                    (float) station.getDouble("e5"),
-                    (float) station.getDouble("e10"),
+                    GetDouble(station, "lat"),
+                    GetDouble(station, "lng"),
+                    GetDouble(station, "dist"),
+                    GetDouble(station, "diesel"),
+                    GetDouble(station, "e5"),
+                    GetDouble(station, "e10"),
                     station.getBoolean("isOpen"),
                     station.getString("houseNumber"),
                     station.getInt("postCode")

@@ -25,17 +25,24 @@ public class Main extends Application {
             e.printStackTrace();
         }
 
+        // Reading the api key from file
         final String apiKey = properties.getProperty("api.key");
         System.out.println("API key: " + apiKey);
 
+        // Initializing the main controller of the app and
+        // the main view of the app with the main controller
         MainController mainController = new MainController(apiKey);
         MainView mainView = new MainView(mainController);
 
         Scene scene = new Scene(mainView, 1280, 720);
 
+        // Setting a predefined style for a
+        // more similar look to windows metro design
         JMetro jMetro = new JMetro(Style.LIGHT);
         jMetro.setScene(scene);
 
+        // Setting some properties of the app
+        // Especially loading the main view
         primaryStage.setTitle("TankApp");
         primaryStage.setScene(scene);
         primaryStage.show();

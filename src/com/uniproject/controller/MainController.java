@@ -16,6 +16,7 @@ public class MainController {
     // Callbacks:
     public Function<Coordinate, Boolean> mapCenterCallback;
     public Function<List<GasStation>, Boolean> mapUpdateCallback;
+    public Function<List<GasStation>, Boolean> listUpdateCallback;
 
     public void registerMapCenterCallback(Function<Coordinate, Boolean> callback) {
         this.mapCenterCallback = callback;
@@ -23,6 +24,10 @@ public class MainController {
 
     public void registerMapUpdateCallback(Function<List<GasStation>, Boolean> callback) {
         this.mapUpdateCallback = callback;
+    }
+
+    public void registerListUpdateCallback(Function<List<GasStation>, Boolean> callback) {
+        this.listUpdateCallback = callback;
     }
 
     // Creating

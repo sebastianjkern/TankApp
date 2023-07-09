@@ -1,4 +1,4 @@
-package com.uniproject.view;
+package com.uniproject.view.sidebar.search;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;

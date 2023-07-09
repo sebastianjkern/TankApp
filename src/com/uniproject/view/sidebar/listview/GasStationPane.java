@@ -1,4 +1,4 @@
-package com.uniproject.view;
+package com.uniproject.view.sidebar.listview;
 
 import com.uniproject.controller.MainController;
 import com.uniproject.model.GasStation;
@@ -17,7 +17,7 @@ public class GasStationPane extends HBox {
     final Region region1 = new Region();
     final Region region2 = new Region();
 
-    private MainController mainController;
+    private final MainController mainController;
 
     public GasStationPane(GasStation gasStation, MainController mainController) {
         this.mainController = mainController;

@@ -12,6 +12,11 @@ import netscape.javascript.JSObject;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// UI class for the map
+// Basically a wrapper around the javafx webview and webengine
+// with abstracted functionality for setting markers and setting the map center
+// Provides functionality for callbacks from javascript to java,
+// for loading gas stations dynamically when map is dragged
 public class MapPane extends StackPane {
     final private WebView webView = new WebView();
     final public WebEngine webEngine = webView.getEngine();
@@ -35,7 +40,6 @@ public class MapPane extends StackPane {
     // Callback for updating the markers in the map
     // Needed if the gas stations are reloaded
     public Boolean UpdateGasStations(List<GasStation> gasStations) {
-        System.out.println("Updating markers");
         webEngine.executeScript("window.gasStations = " + gasStationsToString(gasStations) + ";");
         webEngine.executeScript("updateMarkers();");
         return true;

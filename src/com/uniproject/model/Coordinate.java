@@ -12,14 +12,6 @@ public class Coordinate {
         return "[" + longitude + "," + latitude + "]";
     }
 
-    public float getLatitude() {
-        return latitude;
-    }
-
-    public float getLongitude() {
-        return longitude;
-    }
-
     public Coordinate(float longitude, float latitude) {
         this.latitude = latitude;
         this.longitude = longitude;

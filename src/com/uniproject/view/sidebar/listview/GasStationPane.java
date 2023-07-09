@@ -10,6 +10,8 @@ import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 
 
+// UI Element that shows information about one gas station
+// is meant to be shown in a list, as in the GasStationList
 public class GasStationPane extends HBox {
     public Text name;
     public Text price;

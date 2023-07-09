@@ -11,7 +11,7 @@ import javafx.scene.layout.VBox;
 public class SideBar extends VBox {
 
     public SideBar(MainController mainController) {
-        SearchBox searchBox = new SearchBox();
+        SearchBox searchBox = new SearchBox(mainController);
         GasStationList gasStationList = new GasStationList(mainController);
         this.getChildren().addAll(searchBox, gasStationList);
         this.setAlignment(Pos.BASELINE_CENTER);

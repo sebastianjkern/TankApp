@@ -12,12 +12,14 @@ public class MainController {
 
     public GasStationDataFetcher gasStationDataFetcher;
     public List<GasStation> gasStations;
+    public List<GasStation> searchResult;
 
     // Callbacks:
     public Function<Coordinate, Boolean> mapCenterCallback;
     public Function<List<GasStation>, Boolean> mapUpdateCallback;
     public Function<List<GasStation>, Boolean> listUpdateCallback;
 
+    // Register some callback for updating the markers, gas station list and the map center
     public void registerMapCenterCallback(Function<Coordinate, Boolean> callback) {
         this.mapCenterCallback = callback;
     }
@@ -30,6 +32,10 @@ public class MainController {
         this.listUpdateCallback = callback;
     }
 
+    public void search(String query) {
+        this.searchResult = gasStations.stream().filter(n -> n.getName().contains(query)).toList();
+    }
+
     // Creating
     public MainController(String apiKey) {
         this.gasStationDataFetcher = new GasStationDataFetcher(apiKey);
@@ -40,6 +46,8 @@ public class MainController {
         }
     }
 
+    // Requests data from the api through the GasStationDataFetcher
+    // and stores it in the main controller
     public boolean requestNewLocation(double lat, double lon, double rad) {
         try {
             this.gasStations = gasStationDataFetcher.fetchGasStationData(lat, lon, rad);

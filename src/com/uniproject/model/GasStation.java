@@ -1,5 +1,7 @@
 package com.uniproject.model;
 
+// Data model for everything the json api provides
+// is used to build the gas station listview
 public class GasStation {
     private String id;
     private String name;

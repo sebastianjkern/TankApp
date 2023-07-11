@@ -22,10 +22,10 @@ public class SearchBox extends HBox {
     final MainController mainController;
 
     private void search(String query) {
-        if (Objects.equals(searchBar.getText(), "")) {
+        if (Objects.equals(query, "")) {
             mainController.listUpdateCallback.apply(mainController.gasStations);
         } else {
-            mainController.search(searchBar.getText());
+            mainController.search(query);
             mainController.listUpdateCallback.apply(mainController.searchResult);
         }
     }
@@ -38,19 +38,9 @@ public class SearchBox extends HBox {
         this.setAlignment(Pos.CENTER);
 
         // Register event handler in case search button is clicked
-        searchButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                search(searchBar.getText());
-            }
-        });
+        searchButton.setOnMouseClicked(mouseEvent -> search(searchBar.getText()));
 
         // Register event handler in case the textfield registers event search for gas station
-        searchBar.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                search(searchBar.getText());
-            }
-        });
+        searchBar.setOnAction(actionEvent -> search(searchBar.getText()));
     }
 }

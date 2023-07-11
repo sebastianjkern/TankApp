@@ -24,20 +24,21 @@ public class GasStationPane extends HBox {
     public GasStationPane(GasStation gasStation, MainController mainController) {
         this.mainController = mainController;
 
-        String priceString = gasStation.getE5() + "€";
+        // Set Texts with content
+        this.name = new Text(gasStation.getBrand());
+        this.price = new Text(gasStation.getE10() + "€");
 
-        this.name = new Text(gasStation.getName());
-        this.price = new Text(priceString);
+        // Register button callback
+        this.button.setOnAction(event -> this.mainController.mapCenterCallback.apply(gasStation.getCoordinate()));
 
-        this.button.setOnAction(event -> {
-            this.mainController.mapCenterCallback.apply(gasStation.getCoordinate());
-        });
-
+        // Set some alignment and region parameter to
+        // expand the gas station pane to maximum width
         this.setAlignment(Pos.CENTER);
 
         setHgrow(region1, Priority.ALWAYS);
         setHgrow(region2, Priority.ALWAYS);
 
+        // Add all children to gas station pane
         this.getChildren().addAll(this.price, this.region1, this.name, this.region2, this.button);
     }
 }

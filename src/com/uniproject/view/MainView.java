@@ -10,9 +10,11 @@ import javafx.scene.control.SplitPane;
 // views and initializes them
 public class MainView extends SplitPane {
     public MainView(MainController mainController) {
+        this.setDividerPositions(0.3f, 0.6f);
+
         MapPane mapView = new MapPane(mainController);
         SideBar sideBar = new SideBar(mainController);
+
         this.getItems().addAll(sideBar, mapView);
-        this.setDividerPositions(0.3f, 0.6f);
     }
 }

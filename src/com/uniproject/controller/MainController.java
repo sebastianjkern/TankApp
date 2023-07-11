@@ -34,7 +34,7 @@ public class MainController {
 
     // Basic filtering algorithm for searching name of gas station
     public void search(String query) {
-        this.searchResult = gasStations.stream().filter(n -> n.getName().contains(query)).toList();
+        this.searchResult = gasStations.stream().filter(n -> n.getBrand().contains(query)).toList();
     }
 
     public MainController(String apiKey) {

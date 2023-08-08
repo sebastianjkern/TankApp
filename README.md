@@ -17,7 +17,3 @@ Please make sure to obtain a valid API key from `creativecommons.tankerkoenig.de
 ## Usage
 
 Once you have set up the `config.properties` file with your API key, you can run the TankApp project.
-
-## License
-
-Specify the license information for your project here.

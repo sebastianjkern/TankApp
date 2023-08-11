@@ -18,6 +18,7 @@ public class SearchBox extends HBox {
 
     final MainController mainController;
 
+    // Search Function updating the list
     private void search(String query) {
         if (Objects.equals(query, "")) {
             mainController.listUpdateCallback.apply(mainController.gasStations);

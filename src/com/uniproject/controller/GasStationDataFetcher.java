@@ -21,7 +21,8 @@ public class GasStationDataFetcher {
 
     // Sometimes the api doesn't respond with every field we expect,
     // therefor we check if values are convertible otherwise
-    // we respond wit obviously wrong data
+    // we respond wit obviously wrong data.
+    // Could later be adjusted to hide the elements in question.
     public float GetDouble(JSONObject object, String string) {
         try {
             return (float) object.getDouble(string);

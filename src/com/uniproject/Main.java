@@ -18,6 +18,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
 
         // Load the API key from the configuration file
+    	// Necessary so it can be excluded in the gitignore
         Properties properties = new Properties();
         try (FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/config.properties")) {
             properties.load(fis);
